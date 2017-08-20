@@ -1,0 +1,81 @@
+﻿@model MvcBasic.Models.Member
+
+@{
+    ViewBag.Title = "CreateConfirm";
+
+}
+
+<h2>CreateConfirm</h2>
+
+<div>
+    <h4>Member</h4>
+    <hr />
+
+    @using (Html.BeginForm("Register", "Members", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @ViewBag.member.LastName
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @ViewBag.member.FirstName
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @ViewBag.member.Email
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Birth)
+            </dt>
+
+            <dd>
+                @ViewBag.member.Birth
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Married)
+            </dt>
+
+            <dd>
+                @{
+                    if (ViewBag.member.Married)
+                    {
+                        @Html.CheckBox("IsMarried", true, htmlAttributes: new { @class = "", @disabled = "disabled" })
+                        <span>既婚</span>
+                    }
+
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Memo)
+            </dt>
+
+            <dd>
+                @ViewBag.member.Memo
+            </dd>
+
+        </dl>
+        <input type="submit" value="Create" class="btn btn-default" />
+
+                    }
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
